@@ -13,3 +13,5 @@ const verifyToken = (token) => {
         throw "Error al verificar token de seguridad"
     }
 }
+
+module.exports = {createJsonWebToken, verifyToken}

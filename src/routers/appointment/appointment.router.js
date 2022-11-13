@@ -24,13 +24,13 @@ router.post("/citas", middlewareToken, async (req, res) => {
       info: responseDB,
     });
   } catch (err) {
-    if (Object.keys(error).length > 0) {
-      res.status(500).send(error);
+    if (Object.keys(err).length > 0) {
+      res.status(500).send(err);
     } else {
       res.status(500).send({
         ok: true,
         message: "Cita NO asignada.",
-        info: error.toString(),
+        info: err.toString(),
       });
     }
   }

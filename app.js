@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const app = express()
 const routerUser = require("./src/routers/users/user.router")
+const routerAppointment = require("./src/routers/appointment/appointment.router")
 
 const routerAuth = require("./src/routers/auth/auth.routers")
 const {middlewareToken} = require("./src/middleware/jwt.middleware")
@@ -13,6 +14,7 @@ app.use(express.json())
 
 app.use(routerAuth)
 app.use(routerUser)
+app.use(routerAppointment)
 
 
 app.use((req, res)=>{

@@ -35,3 +35,96 @@ router.post("/citas", middlewareToken, async (req, res) => {
     }
   }
 });
+
+router.get("/citas", async (req, res) => {
+  try {
+    const appointment = await getDocuments("hospital", "citas");
+    res.send({
+      ok: true,
+      message: "Citas consultadas",
+      info: appointment,
+    });
+  } catch (err) {
+    res.status(500).send({
+      ok: false,
+      message: "ERROR: No se pueden consultar las citas",
+      info: err.toString(),
+    });
+  }
+});
+
+router.get("/citas/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const appointment = await getDocumentById("hospital", "citas", id);
+    res.send({
+      ok: true,
+      message: "Cita por id consultada",
+      info: appointment,
+    });
+  } catch (err) {
+    res.status(500).send({
+      ok: false,
+      message: "ERROR: No se pueden consultar las citas",
+      info: err.toString(),
+    });
+  }
+});
+
+router.put("/citas/:id", middlewareToken, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const appointment = req.body;
+    const responseDB = await updateDocumentById("hospital", "citas", {
+      id,
+      data: appointment,
+    });
+    if (responseDB.modifiedCount > 0) {
+      return res.status(200).send({
+        ok: true,
+        message: "Cita actualizada.",
+        info: appointment,
+      });
+    } else {
+      res.status(404).send({
+        ok: false,
+        message: "La cita no existe.",
+        info: "",
+      });
+    }
+  } catch (err) {
+    res.status(500).send({
+      ok: false,
+      message: "ERROR: No se pueden actualizar las citas",
+      info: err.toString(),
+    });
+  }
+});
+
+router.delete("/citas/:id", middlewareToken, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const responseDB = await deleteDocumentById("hospital", "citas", id);
+    if (responseDB.deletedCount === 1) {
+      res.status(200).send({
+        ok: true,
+        message: "Cita eliminada",
+        info: "",
+      });
+    } else {
+      res.status(404).send({
+        ok: false,
+        message: "La cita no existe.",
+        info: responseDB,
+      });
+    }
+  } catch (err) {
+    res.status(500).send({
+      ok: false,
+      message: "ERROR: No se pueden actualizar las citas",
+      info: err.toString(),
+    });
+  }
+});
+
+module.exports = router;

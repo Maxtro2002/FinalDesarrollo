@@ -87,7 +87,7 @@ router.put("/usuarios/:id", middlewareToken, async (req, res) => {
       id,
       data: user.initUser(),
     });
-    if (responseDb.modifiedCount > 0) {
+    if (responseDB.modifiedCount > 0) {
       return res.status(200).send({
         ok: true,
         message: "Usuario actualizado.",
@@ -112,8 +112,8 @@ router.put("/usuarios/:id", middlewareToken, async (req, res) => {
 router.delete("/usuarios/:id", middlewareToken, async (req, res) => {
   try {
     const id = req.params.id;
-    const responseDb = await deleteDocumentById("hospital", "usuarios", id);
-    if (responseDb.deletedCount === 1) {
+    const responseDB = await deleteDocumentById("hospital", "usuarios", id);
+    if (responseDB.deletedCount === 1) {
       res.status(200).send({
         ok: true,
         message: "Usuario eliminado",
@@ -123,7 +123,7 @@ router.delete("/usuarios/:id", middlewareToken, async (req, res) => {
       res.status(404).send({
         ok: false,
         message: "El usuario no existe.",
-        info: responseDb,
+        info: responseDB,
       });
     }
   } catch (err) {

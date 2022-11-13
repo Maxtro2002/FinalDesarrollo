@@ -1,6 +1,6 @@
 const { createHash } = require("../controllers/bcrypt");
 
-class medicines {
+class Medicines {
   constructor({
     medicineID,
     code,
@@ -22,4 +22,4 @@ class medicines {
   }
 }
 
-module.exports = Appointment;
+module.exports = Medicines;

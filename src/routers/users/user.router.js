@@ -135,4 +135,4 @@ router.delete("/usuarios/:id", middlewareToken, async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

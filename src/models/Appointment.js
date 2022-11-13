@@ -3,7 +3,7 @@ class Appointment {
     if (!data.id) {
       throw { ok: false, message: "Id obligatorio" };
     }
-    return new Appointment(data)
+    return new Appointment(data);
   }
 
   constructor(
@@ -13,15 +13,16 @@ class Appointment {
     medicaments,
     date,
     generalInformation,
-    medicalHistory) {
-    this.appointmentID = appointmentID
-    this.doctor = doctor
-    this.pacient = pacient
-    this.medicaments = medicaments
-    this.date = date
-    this.generalInformation = generalInformation
-    this.medicalHistory = medicalHistory
-    }
+    medicalHistory
+  ) {
+    this.appointmentID = appointmentID;
+    this.doctor = doctor;
+    this.pacient = pacient;
+    this.medicaments = medicaments;
+    this.date = date;
+    this.generalInformation = generalInformation;
+    this.medicalHistory = medicalHistory;
+  }
 }
 
-module.exports = Appointment
+module.exports = Appointment;

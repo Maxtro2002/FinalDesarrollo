@@ -6,7 +6,7 @@ class Appointment {
     return new Appointment(data);
   }
 
-  constructor(
+  constructor({
     appointmentID,
     doctor,
     pacient,
@@ -14,7 +14,7 @@ class Appointment {
     date,
     generalInformation,
     medicalHistory
-  ) {
+  }) {
     this.appointmentID = appointmentID;
     this.doctor = doctor;
     this.pacient = pacient;

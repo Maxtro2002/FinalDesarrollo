@@ -59,5 +59,3 @@ module.exports = {
   updateDocumentById,
   getDocumentsWithFilter,
 };
-
-module.exports = { getDocuments, insertDocument, getDocumentById, deleteDocumentById, updateDocumentById, getDocumentsWithFilter }

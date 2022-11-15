@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use(routerAuth)
 app.use(routerUser)
-app.use(middlewareToken)
+//app.use(middlewareToken)
 app.use(routerAppointment)
 app.use(routerMedicine)
 
